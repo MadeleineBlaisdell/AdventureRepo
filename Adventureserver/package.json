@@ -1,0 +1,21 @@
+{
+  "name": "adventureserver",
+  "version": "1.0.0",
+  "description": "running adventure",
+  "keywords": [
+    "p5",
+    "play",
+    "platforming"
+  ],
+  "license": "ISC",
+  "author": "Madeleine Blaisdell",
+  "type": "commonjs",
+  "main": "p5play.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
