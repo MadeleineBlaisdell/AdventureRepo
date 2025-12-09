@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Leaderboard</h1>
+    <table border="1">
+        <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Time</th>
+            <th>Date</th>
+        </tr>
+        <tbody id="feed"></tbody>
+    </table>
+    <a href="index.html">Back to Game</a>
+    
+    <script>
+        fetch("/leaderboard")
+            .then(res => res.json())
+            .then(data => {
+                let html = '';
+                data.scores.forEach((score, i) => {
+                    html += `<tr>
+                        <td>#${i + 1}</td>
+                        <td>${score.name}</td>
+                        <td>${score.score}s</td>
+                        <td>${score.date}</td>
+                    </tr>`;
+                });
+                document.getElementById("feed").innerHTML = html || '<tr><td colspan="4">No scores yet</td></tr>';
+            });
+    </script>
+</body>
+</html>

@@ -13,8 +13,19 @@
 
   </head>
   <body>
-    <main>
-    </main>
+    <h1>Blaze's Adventure</h1>
+    <div class ="game-container">
+      <div class="side-panel L"></div>
+      <main>
+      </main>
+      <div class="side-panel R"></div>
+    </div>
+    <div class ="controls">
+      <img src="Images/Keys.PNG" alt="Game Controls" id="controller">
+      <button id="reset-btn">Reset</button>
+    </div>
+    <input type="text" id="player-name" placeholder="Enter your name" maxlength="20" style="display:none;">
+    <a href="leaderboard.html" id="leaderboard-link" style="display:none; color: white; text-decoration: none;">View Leaderboard</a>
     <script src="sketch.js"></script>
   </body>
 </html>
