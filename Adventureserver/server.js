@@ -4,8 +4,6 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve files from `public` first, then from the project root so
-// `index.html` files in subfolders are reachable (useful for local dev).
 app.use(express.json());
 
 app.use('/', express.static('public'));
