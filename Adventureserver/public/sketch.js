@@ -9,6 +9,7 @@ let locationX = 0;
 let locationY = 0;
 let spacePressed = false;
 let scoreSubmitted = false;
+let listenerAdded = false;
 
 var totalTime;
 var splashTime;
@@ -93,6 +94,14 @@ function startScreen() {
 }
 
 function initGame() {
+
+  scoreSubmitted = false;
+  listenerAdded = false;
+
+  document.getElementById('player-name').style.display = 'none';
+  document.getElementById('player-name').value = '';  
+  document.getElementById('leaderboard-link').style.display = 'none';
+
   world.gravity.y = 5;
 
   sprite = new Sprite(100, 200, 8, 13);
@@ -332,6 +341,8 @@ function endScreen() {
 }
 
 function scoreSubmit(time){
+  if (listenerAdded) return;
+ 
   let nameInput = document.getElementById('player-name');
   nameInput.style.display = 'block';
   nameInput.focus();
@@ -351,6 +362,7 @@ function scoreSubmit(time){
       document.getElementById('leaderboard-link').style.display = 'block';
     }
   })
+  listenerAdded = true;
     // .then(response => response.json())
     // .then(data =>{
     //   console.log(data);
@@ -368,7 +380,13 @@ document.getElementById('reset-btn').addEventListener('click', function() {
   itemPickedUp = false;
   spacePressed = false;
   scoreSubmitted = false;
-  
+  listenerAdded = false;
+
+  let nameInput = document.getElementById("player-name");
+  nameInput.style.display = 'none';
+  nameInput.value = '';//check here if you need to space this
+  document.getElementById('leaderboard-link').style.display = 'none';
+
   // Delete all sprites
   if (allSprites && allSprites.length > 0) {
     allSprites.forEach(sprite => sprite.remove());

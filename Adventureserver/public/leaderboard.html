@@ -22,6 +22,7 @@
         fetch("/leaderboard")
             .then(res => res.json())
             .then(data => {
+                console.log("Leaderboard data:", data);
                 let html = '';
                 data.scores.forEach((score, i) => {
                     html += `<tr>
@@ -32,7 +33,8 @@
                     </tr>`;
                 });
                 document.getElementById("feed").innerHTML = html || '<tr><td colspan="4">No scores yet</td></tr>';
-            });
+            })
+            .catch(error=>console.error("Error:", error));
     </script>
 </body>
 </html>
